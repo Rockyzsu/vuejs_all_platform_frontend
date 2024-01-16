@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>art-template演示</title>
+        <!-- 
+            在引入template-web.js 文件之前，
+            需使用 npm install art-template --save 命令安装它。 
+        -->
+        <script
+            src="./node_modules/art-template/lib/template-web.js">
+        </script>
+    </head>
+    <body>
+        <div id="Hero"></div>
+        <script type="text/html" id="tpl">
+            <!-- 在模板代码中使用模板变量及其语法 -->
+            <h1>英雄名单</h1>
+            <ul>
+                {{each names}}
+                    <li>{{$value}}</li>
+                {{/each}}
+            </ul>
+        </script>
+        <script type="text/javascript">
+            // 定义 JavaScript 数据对象
+            const jsData = ['superman','batman'];
+            // 将数据对象关联到同名的模板变量上
+            const tpl = template('tpl', {
+                names: jsData
+            });
+            const Hero = document.querySelector('#Hero');
+            Hero.innerHTML = tpl;
+            // 以下对 jsData 的修改不会反映到用户界面中
+            setTimeout(() => {
+                jsData.push('the flash');
+            }, 1000);
+        </script>
+    </body>
+</html>

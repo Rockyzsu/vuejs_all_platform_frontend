@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>学习 Vue 组件实验（1）：建构组件</title>
+        <script type="module">
+        import Vue from './node_modules/vue/dist/vue.esm.browser.js';
+
+        // 全局组件注册
+        Vue.component('say-hello', {
+            template: `<h1>你好， {{ you }}！</h1>`,
+            props: ['who'],
+            data: function() {
+                return {
+                    you: this.who
+                };
+            }
+        });
+
+        const app = new Vue({
+            el: '#app',
+            // 局部组件注册
+            components: {
+                'welcome-you': {
+                    template: `<h2>欢迎你， {{ you }}！</h2>`,
+                    props: ['who'],
+                    data: function() {
+                        return {
+                            you: this.who
+                        };
+                    }
+                }
+            },
+            data: {
+                who: 'vue'
+            }
+        });
+        </script>
+    </head>
+    <body>
+        <div id="app">
+            <say-hello :who="who"></say-hello>
+            <welcome-you :who="who"></welcome-you>
+        </div>    
+    </body>
+</html>

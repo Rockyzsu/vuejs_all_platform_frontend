@@ -1,0 +1,11 @@
+{
+  "name": "hello_js",
+  "version": "1.0.0",
+  "description": "这是一个演示HTML、CSS与JavaScript的示例。",
+  "main": "index.htm",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "owlman",
+  "license": "ISC"
+}

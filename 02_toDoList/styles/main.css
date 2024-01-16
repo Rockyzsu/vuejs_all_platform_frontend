@@ -1,0 +1,50 @@
+body {
+    background: black;
+    color: floralwhite;
+}
+
+#app form input[type='text'] {
+    width: 60%;
+    font-size: 1.4rem;    
+}
+
+#app form input[type='submit'] {
+    width: 20%;
+    font-size: 1.4rem;
+    background-color: floralwhite;
+    border-radius: 1rem;
+}
+
+#todolist {
+    margin: 0.5rem 0rem;
+    padding: 0.5rem;
+    width: 80%;
+    border-radius: 1rem;
+    color: black;
+    background: floralwhite;
+}
+
+#todolist ul {
+    list-style-type: none;
+    margin: 1rem;
+    padding: 0rem;
+}
+
+#todolist ul div {
+    margin: 0rem;
+    padding: 0rem;
+    width: 90%;
+    height: 1.5rem;
+}
+
+#todolist ul li input[type='button'] {
+    float: right;
+    width: 10%;
+    background: black;
+    color: floralwhite;
+    border-radius: 1rem;
+}
+
+.deleteItem {
+    text-decoration: line-through;
+}

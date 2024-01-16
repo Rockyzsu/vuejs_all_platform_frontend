@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <title>Hero</title>
+        <script type="module">
+        import Vue from './node_modules/vue/dist/vue.esm.browser.js';
+
+        const hero = new Vue({
+            data : {
+                names : ['superman','batman']
+            },
+            computed : {
+                counter : function() {
+                    return this.names.length;
+                }
+            },
+            watch: {
+                names : {
+                    handler : function(newValue, oldValue) {
+                        console.log('英雄名单发生了变化');
+                    },
+                    deep : true
+                }
+            },
+            created : function() {
+                // 用户界面载入 1 秒之后 the flash 会出现在名单中
+                const jsData = this.names;
+                setTimeout(() => {
+                    jsData.push('the flash');
+                }, 1000);
+            }
+        });
+
+        const antiHero = new Vue({
+            data : {
+                names : ['owlman','Deadpool']
+            },
+            computed : {
+                counter : function() {
+                    return this.names.length;
+                }
+            }
+        });
+
+        hero.$mount('#hero');
+        antiHero.$mount('#antiHero');
+        </script>
+    </head>
+    <body>
+        <div id="hero">
+            <h1>英雄名单（{{ counter }}）</h1>
+            <ul>
+                <li v-for="name in names"> {{ name }} </li>
+            </ul>
+        </div>
+        <div id="antiHero">
+            <h1>反英雄名单 （{{ counter }}）</h1>
+            <ul>
+                <li v-for="name in names"> {{ name }} </li>
+            </ul>
+        </div>
+    </body>
+</html>

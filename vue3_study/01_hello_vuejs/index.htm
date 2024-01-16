@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>浏览器端JS代码测试</title>
+		<link rel="stylesheet" type="text/css" href="styles/main.css" />        
+        <script type="module" src="./scripts/main.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h1> {{ app_title }} </h1>
+            <div id="content"> 
+                <say-hello who="owlman" status="single"></say-hello> 
+                {{ message }}
+            </div>
+            <input type="button" value="打个招呼！" v-on:click="sayHello()">
+        </div>
+    </body>
+</html>

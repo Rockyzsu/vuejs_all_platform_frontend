@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <title>计数器示例</title>
+        <script type="module">
+        import Vue from './node_modules/vue/dist/vue.esm.browser.js';
+
+        new Vue({
+            el   : '#my_counter',
+            data : {
+                counter : 0
+            },
+            methods : {
+                // add : function() {
+                //     if(this.counter < 10)
+                //         this.counter++;
+                // },
+                // sub : function() {
+                //     if(this.counter > -10)
+                //         this.counter--;
+                // },
+                runCounter : function(value) {
+                    this.counter += value;
+                    if(this.counter > 10)
+                        this.counter = 10;
+                    else if(this.counter < -10)
+                        this.counter = -10;
+                }                
+            }
+        });
+        </script>
+    </head>
+    <body>
+        <div id="my_counter">
+            <h1>计数器实现示例</h1>
+            <!-- <input type="button" value=" - " @click="counter -= 1"> -->
+            <!-- <input type="button" value=" - " @click="sub"> -->
+            <input type="button" value=" - " @click="runCounter(-1)">
+            <span> {{ counter }} </span>
+            <!-- <input type="button" value=" + " @click="counter += 1"> -->
+            <!-- <input type="button" value=" + " @click="add"> -->
+            <input type="button" value=" + " @click="runCounter(1)">
+        </div>
+    </body>
+</html>
+ 

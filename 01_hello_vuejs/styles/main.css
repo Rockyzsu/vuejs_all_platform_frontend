@@ -1,0 +1,19 @@
+body {
+    background: black;
+    color: floralwhite;
+}
+
+#content {
+    width: 400px;
+    height: 300px;
+    border-radius: 14px;
+    padding: 14px;
+    color: black;
+    background: floralwhite;
+}
+
+#content img {
+    float: left;
+    width: 200px;
+    margin: 0px 14px;
+}

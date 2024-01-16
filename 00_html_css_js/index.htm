@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>浏览器端JS代码测试</title>
+        <style>
+            body {
+                background: black;
+                color: floralwhite;
+            }
+
+            #content {
+                width: 400px;
+                height: 300px;
+                border-radius: 14px;
+                padding: 14px;
+                color: black;
+                background: floralwhite;
+            }
+        </style>
+        <script>
+            function sayHello() {
+                const div = document.querySelector('#content');
+                div.textContent = 'Hello JavaScript';
+            }
+        </script>
+    </head>
+    <body>
+        <h1>浏览器端的JavaScript</h1>
+        <div id="content"></div>
+        <input type="button" value="打个招呼！" onclick="sayHello()">
+    </body>
+</html>

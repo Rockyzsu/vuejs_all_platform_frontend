@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+        <title>浏览器端JS代码测试</title>
+		<link rel="stylesheet" type="text/css" href="styles/main.css" />        
+        <script type="module" src="./scripts/main.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <h1> {{ app_title }} </h1>
+            <!-- 上面是下面这种写法的语法糖 -->
+            <!-- <h1 v-text="app_title"></h1> -->
+            <div id="content">
+                <img :src="imgURL" v-show="isShow"> 
+                <!-- 上面是下面这种写法的简写形式 -->
+                <!--<img v-bind:src="imgURL" v-show="isShow">  -->
+                <!-- 如果 message 是个字符串： -->
+                <!-- <p v-show="isShow">{{ message }}</p> -->
+                <!-- 如果 message 是个 JSON 格式的数据对象： -->
+                <div v-show="isShow" v-for="( value, name ) in message">
+                    <h3 v-if="name === 'title'"> {{ value }} </h3>
+                    <ul v-else-if="name === 'documents'">
+                        <li v-for="( url, version ) in value">
+                            <a :href="url"> Vue.js {{ version }} 官方教程 </a>
+                        </li>
+                    </ul>
+                    <p v-else> {{ value }} </p>
+                </div>                
+            </div>
+            <input type="button" :value="btnText" @click="sayHello()">
+            <!-- 上面是下面这种写法的简写形式 -->
+            <!-- <input type="button" :value="btnText" v-on:click="sayHello()"> -->
+        </div>
+    </body>
+</html>

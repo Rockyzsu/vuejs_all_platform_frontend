@@ -1,0 +1,32 @@
+`<!DOCTYPE html>
+<html lang="zh-cn">
+    <head>
+        <meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="styles/main.css" />        
+    
+        <script type="module" src="scripts/main.js"></script>
+        <title>待办事项</title>
+    </head>
+    <body>
+        <div id="app">
+            <h1>待办事项应用示例</h1>
+            <form @submit.prevent="addNew">
+                <input type="text" v-model="newTask" @keyup.enter="addNew">
+                <input type="submit" value="添加新任务">
+            </form>
+            <div id="todolist" v-show="taskList.length > 0">
+                <h2>待办事项：</h2>            
+                <ul>
+                    <li v-for="( task,index ) in taskList">
+                    <div>
+                        <input type="checkbox" v-model="doneList" :value="task">
+                        <label :class="{ deleteItem : doneList.includes(task) }"
+                               :for="task">{{ task }}</label>
+                        <input type="button" value="删除" @click="remove(index)">
+                    </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>

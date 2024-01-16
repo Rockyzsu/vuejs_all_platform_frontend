@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>person 示例</title>
+    <script type="module">
+    import Vue from './node_modules/vue/dist/vue.esm.browser.js';
+    
+    const person = new Vue({
+        data: {
+            firstName: 'Bruce',
+            lastName: 'Wayne'
+        },
+        computed: {
+            fullName : {
+                // getter
+                get : function() {
+                    return this.firstName + ' ' + this.lastName;
+                },
+                // setter
+                set : function(newValue) {
+                    this.setFullName(newValue);
+                }
+            }
+        },
+        watch: {
+            firstName : {
+                handler : function(newValue, oldValue) {
+                    console.log('firstName属性发生变化');
+                    this.showUpdate(newValue, oldValue);
+                },
+                immediate : true
+            },
+            lastName : function(newValue, oldValue) {
+               console.log('lastName属性发生变化');
+               this.showUpdate(newValue, oldValue);
+            },
+            fullName : function(newValue, oldValue) {
+               console.log('fullName属性发生变化');
+               this.showUpdate(newValue, oldValue);
+            }
+        },
+        methods : {
+            setFullName : function(newValue) {
+                const names = newValue.split(' ');
+                this.firstName = names[0];
+                this.lastName = names[names.length - 1];
+            },
+            showUpdate : function(newValue, oldValue) {
+                console.log('数据变化之前：',oldValue);
+                console.log('数据变化之后：',newValue);
+            }
+        }
+    });
+
+    person.$mount('#person');
+    </script>
+</head>
+<body>
+    <h1>Person 示例</h1>
+    <div id="person">
+        <p>{{ fullName }}</p>
+        <input type="text" v-model="fullName">
+        <input type="button" value="提交" 
+               @click="setFullName(fullName)">
+    </div>
+</body>
+</html>
